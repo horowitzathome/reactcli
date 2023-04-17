@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav_button {
+  @apply text-gray-400;
+}
+
+.bdr_heading {
+  @apply  text-gray-600 dark:text-gray-300 text-xl;
+}
+
+.bdr_button {
+  @apply py-1.5 px-5 mr-1 mb-1 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700;
+}
+
+.bdr-text-color {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+.bdr-text-info {
+  @apply text-gray-500 dark:text-red-100;
+}
+
+.bdr-text-ok-color {
+  @apply text-green-400;
+}
+
+.bdr-input {
+  @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+}
+
+.bdr_radio_ul {
+  @apply items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-800 dark:border-gray-600 dark:text-white;
+}
+
+.bdr_radio_li {
+  @apply w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600;
+}
+
+.bdr_radio_div {
+  @apply flex items-center pl-3;
+}
+
+.bdr_radio_input {
+  @apply w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500;
+}
+
+.bdr_radio_label {
+  @apply w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+}
+
+.bdr_check_ul {
+  @apply items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-800 dark:border-gray-600 dark:text-white;
+}
+
+.bdr_check_li {
+  @apply w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600;
+}
+
+.bdr_check_div {
+  @apply flex items-center pl-3;
+}
+
+.bdr_check_input {
+  @apply w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500;
+}
+
+.bdr_check_label {
+  @apply w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

@@ -1,0 +1,19 @@
+name: Pipeline
+
+permissions:
+  contents: "write"
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    if: true
+    uses: horowitzathome/rust-workflows/.github/workflows/build_nextjs.yaml@main
+    with:
+      image: horowitzathome/reactcli
+    secrets:
+      container-registry-username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
+      container-registry-password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reactcli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reactcli-app
+  template:
+    metadata:
+      labels:
+        app: reactcli-app
+    spec:
+      containers:
+      - name: reactcli-container
+        # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
+        # Replace $GCLOUD_PROJECT with your project ID.
+        image: horowitzathome/reactcli:v0.1.2-x86_64-unknown-linux-gnu
+        # This app listens on port 8080 for web traffic by default.
+        ports:
+        - containerPort: 3000
+        env:
+          - name: PORT
+            value: "3000"

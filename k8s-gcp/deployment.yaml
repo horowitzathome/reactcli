@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reactcli-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reactcli-app
+  template:
+    metadata:
+      labels:
+        app: reactcli-app
+    spec:
+      containers:
+      - name: reactcli-container
+        image: horowitzathome/reactcli:latest-x86_64-unknown-linux-gnu
+        env:
+        - name: "PORT"
+          value: "3000"

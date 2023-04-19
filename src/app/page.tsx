@@ -1,11 +1,14 @@
 "use client";
 
 import "reflect-metadata";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import React from "react";
 import { NavigationPages } from "./navigate";
 import Test from "./test/page";
 import { Button } from "flowbite-react";
+import { StateProvider, store } from "./store.js";
+import { createContext } from "react";
+import { TasksProvider } from "./TaskContext";
 
 export default function Home() {
   const [pageValue, setPageValue] = useState<NavigationPages>(NavigationPages.Main);
@@ -47,9 +50,19 @@ export default function Home() {
     );
   }
 
+  //type ThemeContextType = "light" | "dark";
+  //const newContext = createContext({ color: 'black' });
+  //const newContext = createContext<ThemeContextType>("light");
+
+  const globalState = useContext(store);
+  console.log("Global state color in main page = " + globalState.color);
+
   return (
     <div className="pl-5 pr-5">
-      <div className="mt-3">{pageSelect()}</div>
+      <div>Some Text</div>
+      <TasksProvider>
+        <div className="mt-3">{pageSelect()}</div>
+      </TasksProvider>
     </div>
   );
 }

@@ -1,9 +1,12 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { NavigationPages } from "../navigate";
 import { Button } from "flowbite-react";
 import { SERVER_URL } from "../constants";
+import { store } from "../store";
+import { useTasks, useTasksDispatch } from "../TaskContext";
+import NoSSRWrapper from "../NoSSRWrapper";
 
 type DogType = {
   name: string;
@@ -21,9 +24,22 @@ export default function Test({
 */
 
 export default function Test() {
-  const buttonHandlerHome = (event: React.MouseEvent<HTMLButtonElement>) => {
+  let nextId = 3;
+  console.log("nextId = " + nextId);
+
+  const ButtonHandlerHome = (event: React.MouseEvent<HTMLButtonElement>) => {
     //    setPageValueParam(NavigationPages.Main);
+    //const globalState = useContext(store);
+    //const { dispatch } = globalState;
+    //dispatch({ type: 'action description' });
+
+    dispatch({
+      type: "added",
+      id: nextId++,
+      text: "Milk " + nextId,
+    });
   };
+
   const [dogValue, setDogValue] = useState<DogType>();
 
   async function getDog() {
@@ -49,6 +65,17 @@ export default function Test() {
       .catch((error) => {
         console.log("An error occurred getting the dog with " + error);
       });
+  }
+
+  const tasks = useTasks();
+  function ShowTasks(): React.ReactNode {
+    return (
+      <ul>
+        {tasks.map((task) => (
+          <li key={task.id}>{task.text}</li>
+        ))}
+      </ul>
+    );
   }
 
   function showDog(): React.ReactNode {
@@ -85,17 +112,38 @@ export default function Test() {
 
   //  <div className="bdr-text-color">{showHost()}</div>
 
+  const globalState = useContext(store);
+  const dispatch = useTasksDispatch();
+  console.log("Global state color in TestPage = " + globalState.color);
+
   return (
-    <div>
-      <h1 className="bdr_heading">Test</h1>
+    <NoSSRWrapper>
+      <div>
+        <h1 className="bdr_heading">Test</h1>
 
-      <div className="bdr-text-color">{showDog()}</div>
+        <div className="bdr-text-color">{showDog()}</div>
 
-      <div className="mt-5">
-        <Button color="gray" size="sm" onClick={buttonHandlerHome}>
-          Zurück
-        </Button>
+        <div>{ShowTasks()}</div>
+
+        <div className="mt-5">
+          <Button color="gray" size="sm" onClick={ButtonHandlerHome}>
+            Zurück
+          </Button>
+          <Button
+            color="gray"
+            size="sm"
+            onClick={(e) => {
+              dispatch({
+                type: "added",
+                id: nextId++,
+                text: "Milk " + nextId,
+              });
+            }}
+          >
+            Neuer Task
+          </Button>
+        </div>
       </div>
-    </div>
+    </NoSSRWrapper>
   );
 }

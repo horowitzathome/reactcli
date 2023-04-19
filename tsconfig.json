@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/time/page.tsx", "src/app/free/date.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/time/page.tsx", "src/app/free/date.tsx", "src/app/NoSSRWrapper.js"],
   "exclude": ["node_modules"]
 }

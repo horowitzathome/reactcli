@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const metadata = {
   title: "React Client",
-  description: "Created by Nozicka",
+  description: "Created by Georg Nozicka",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

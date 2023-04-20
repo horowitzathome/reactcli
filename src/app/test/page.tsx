@@ -1,11 +1,8 @@
 "use client";
 
 import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
-import { NavigationPages } from "../navigate";
 import { Button } from "flowbite-react";
 import { SERVER_URL } from "../constants";
-import { store } from "../store";
-import { NextPage } from "next";
 import { navigateTo, NavigationPage, usePage, usePageDispatch } from "../NavigateContext";
 
 type DogType = {
@@ -67,7 +64,6 @@ export default function Test() {
     //}, [pageValueParam]);
   }, []);
 
-
   return (
     <div>
       <h1 className="bdr_heading">Test</h1>
@@ -82,4 +78,3 @@ export default function Test() {
     </div>
   );
 }
-

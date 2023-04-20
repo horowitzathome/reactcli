@@ -1,26 +1,32 @@
 "use client";
 
 import "reflect-metadata";
-import { useContext, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import React from "react";
 import { NavigationPages } from "./navigate";
-import Test from "./test/page";
+
 import { Button } from "flowbite-react";
 import { StateProvider, store } from "./store.js";
 import { createContext } from "react";
-import { TasksProvider } from "./TaskContext";
+import Test from "./test/page";
+import { NavigationPage, navigateTo, usePage, usePageDispatch } from "./NavigateContext";
 
 export default function Home() {
-  const [pageValue, setPageValue] = useState<NavigationPages>(NavigationPages.Main);
+  //const [pageValue, setPageValue] = useState<NavigationPages>(NavigationPages.Main);
+
+  const dispatchPage = usePageDispatch();
+  const currentPage = usePage();
 
   const buttonHandlerTest = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setPageValue(NavigationPages.Test);
+    //setPageValue(NavigationPages.Test);
+    navigateTo(dispatchPage, NavigationPage.Test);
   };
 
   function pageSelect(): React.ReactNode {
-    if (pageValue == NavigationPages.Main) {
+    console.log("pageSelect to page " + currentPage);
+    if (currentPage == NavigationPage.Main) {
       return pageMain();
-    } else if (pageValue == NavigationPages.Test) {
+    } else if (currentPage == NavigationPage.Test) {
       return pageTest();
     }
 
@@ -60,9 +66,7 @@ export default function Home() {
   return (
     <div className="pl-5 pr-5">
       <div>Some Text</div>
-      <TasksProvider>
-        <div className="mt-3">{pageSelect()}</div>
-      </TasksProvider>
+      <div className="mt-3">{pageSelect()}</div>
     </div>
   );
 }

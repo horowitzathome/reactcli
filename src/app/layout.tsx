@@ -1,3 +1,4 @@
+import { PageProvider } from "./NavigateContext";
 import "./globals.css";
 import Image from "next/image";
 
@@ -12,7 +13,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Image className="absolute right-0 top-0" src="/cli/next.svg" alt="Next" width={100} height={24} priority />
         <div className="text-2xl text-blue-100 text-center mt-5">Next Test</div>
-        <section>{children}</section>
+        <PageProvider>
+          <section>{children}</section>
+        </PageProvider>
       </body>
     </html>
   );

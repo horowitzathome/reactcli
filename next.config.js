@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   basePath: '/cli',
-  assetPrefix: '/cli/', // set assetPrefix to '/root/'
+  assetPrefix: '/cli/', 
 }
 
 module.exports = nextConfig
